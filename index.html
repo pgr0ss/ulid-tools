@@ -77,8 +77,31 @@
     <div class="container">
       <h1>ULID Tools</h1>
 
-      <h3>New ULID</h3>
+      <h3>Current Time ULID</h3>
       <div id="newulid"></div>
+
+      <hr />
+      <h3>Specified Time ULID</h3>
+      <div id="ulidfortime"></div>
+      <br />
+
+      <form>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="inputtime"
+            value="1469918176385"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          onClick="newForTime(); return false"
+        >
+          Generate
+        </button>
+      </form>
 
       <hr />
       <h3>Decode ULID</h3>
@@ -122,6 +145,15 @@
           document.getElementById("time").innerText = err.message;
         }
       }
+
+      function newForTime() {
+        const t = Number(document.getElementById("inputtime").value);
+        console.log(t);
+        const u = ULID.ulid(t);
+        console.log(u);
+        document.getElementById("ulidfortime").innerText = u;
+      }
+      newForTime();
 
       document.getElementById("newulid").innerText = ULID.ulid();
       console.log(ULID.ulid());
