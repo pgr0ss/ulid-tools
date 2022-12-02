@@ -91,7 +91,7 @@
             type="text"
             class="form-control"
             id="inputtime"
-            value="1469918176385"
+            value=""
           />
         </div>
         <button
@@ -122,6 +122,7 @@
       <br />
 
       <div>Time: <span id="time" /></div>
+      <div>Milliseconds: <span id="time_ms" /></div>
     </div>
 
     <script
@@ -141,8 +142,10 @@
           console.log(date);
 
           document.getElementById("time").innerText = date;
+          document.getElementById("time_ms").innerText = date.getTime();
         } catch (err) {
           document.getElementById("time").innerText = err.message;
+          document.getElementById("time_ms").innerText = "";
         }
       }
 
@@ -153,10 +156,12 @@
         console.log(u);
         document.getElementById("ulidfortime").innerText = u;
       }
-      newForTime();
 
       document.getElementById("newulid").innerText = ULID.ulid();
       console.log(ULID.ulid());
+
+      document.getElementById("inputtime").value = new Date().getTime();
+      newForTime();
     </script>
   </body>
 </html>
